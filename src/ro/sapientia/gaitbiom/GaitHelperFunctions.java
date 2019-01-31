@@ -143,7 +143,7 @@ public class GaitHelperFunctions {
     /**
      *
      * @param input - the path of the input file (contains file name)
-     * @param output - the output file name and location. This is also az input, but this contains the resume of the merge.
+     * @param output - the output file name and location. This is also an input, but this contains the resume of the merge.
      */
     public static void mergeEquallyArffFiles(String input, String output) {
         Scanner scanner = null;
@@ -241,7 +241,7 @@ public class GaitHelperFunctions {
     /**
      *
      * @param files - a list of files we want to merge
-     * @param outFile - the new file location and name, witch contains the merged data
+     * @param outFile - the new file location and name, which contains the merged data
      * @throws IOException
      */
     public static void mergeRawFiles(ArrayList<String> files, String outFile) throws IOException {

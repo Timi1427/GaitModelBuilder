@@ -24,7 +24,7 @@ public class GaitModelBuilder implements IGaitModelBuilder {
 
     /**
      *
-     * @param arffFile - a .arff type file witch contains user's features
+     * @param arffFile - a .arff type file which contains user's features
      * @return a classifier
      */
     public Classifier createModel(String arffFile) {
@@ -69,7 +69,7 @@ public class GaitModelBuilder implements IGaitModelBuilder {
 
     /**
      *
-     * @param arffFile - a .arff type file witch contains user's features
+     * @param arffFile - a .arff type file which contains user's features
      * @return a List of Attributes gained from the .arff file
      */
     public ArrayList<Attribute> getAttributes(String arffFile) {
@@ -103,7 +103,7 @@ public class GaitModelBuilder implements IGaitModelBuilder {
 
     /**
      *
-     * @param path - the file path of the file witch contains user's features
+     * @param path - the file path of the file which contains user's features
      * @return Instances of user's features
      */
     public Instances loadDataset(String path) {
@@ -158,7 +158,7 @@ public class GaitModelBuilder implements IGaitModelBuilder {
 
     /**
      *
-     * @param model - this is the model witch we want to save
+     * @param model - this is the model which we want to save
      * @param modelpath - this is a path (contains the file name), where we want to save the model
      */
     public void saveModel(Classifier model, String modelpath) {
