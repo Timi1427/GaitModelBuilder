@@ -55,7 +55,7 @@ public class GaitHelperFunctions {
         mergeEquallyArffFiles(FEATURE_DUMMY_FILE, FEATURE_USER_FILE);
 
         /*try{
-            CreateAndSaveModel(FEATURE_USER_FILE, MODEL_FILE);
+            createAndSaveModel(FEATURE_USER_FILE, MODEL_FILE);
         }
         catch (Exception e){
             e.printStackTrace();
@@ -98,7 +98,7 @@ public class GaitHelperFunctions {
         }
     }
 
-    private static void CreateAndSaveModel(String userFeatureFilePath, String userModelFilePath){
+    public static void createAndSaveModel(String userFeatureFilePath, String userModelFilePath){
         GaitModelBuilder gaitModelBuilder = new GaitModelBuilder();
 
         //the create muxed feature function save the mixed data in the first file to use less space

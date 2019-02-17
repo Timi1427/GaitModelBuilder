@@ -5,14 +5,12 @@ import weka.classifiers.evaluation.Evaluation;
 import weka.classifiers.trees.RandomForest;
 import weka.core.Attribute;
 import weka.core.Instances;
+import weka.core.ResourceUtils;
 import weka.core.SerializationHelper;
 import weka.core.converters.ArffLoader;
 import weka.core.converters.ConverterUtils;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
@@ -29,7 +27,7 @@ public class GaitModelBuilder implements IGaitModelBuilder {
      */
     public Classifier createModel(String arffFile) {
         // Load ARFF file
-        BufferedReader reader = null;
+        /*BufferedReader reader = null;
         try {
             reader = new BufferedReader(new FileReader(arffFile));
         } catch (FileNotFoundException ex) {
@@ -42,8 +40,22 @@ public class GaitModelBuilder implements IGaitModelBuilder {
             arff = new ArffLoader.ArffReader(reader);
         } catch (Exception ex) {
             Logger.getLogger(GaitHelperFunctions.class.getName()).log(Level.SEVERE, null, ex);
+        }*/
+
+
+        ArffLoader loader = new ArffLoader();
+        try {
+            loader.setSource(new File(arffFile));
+        } catch (IOException e) {
+            Logger.getLogger(GaitHelperFunctions.class.getName()).log(Level.SEVERE, null, e);
         }
-        Instances data = arff.getData();
+
+        Instances data = null;
+        try {
+            data = loader.getDataSet();
+        } catch (IOException e) {
+            Logger.getLogger(GaitHelperFunctions.class.getName()).log(Level.SEVERE, null, e);
+        }
         data.setClassIndex(data.numAttributes() - 1);
 
         // Create classifier
@@ -88,12 +100,15 @@ public class GaitModelBuilder implements IGaitModelBuilder {
         } catch (IOException ex) {
             Logger.getLogger(GaitHelperFunctions.class.getName()).log(Level.SEVERE, null, ex);
         }
+
         Instances data = arff.getData();
         Enumeration<Attribute> attribs = data.enumerateAttributes();
         attributes = new ArrayList<Attribute>();
+
         while (attribs.hasMoreElements()) {
             attributes.add(attribs.nextElement());
         }
+
         List<String> userids = new ArrayList<>();
         userids.add("user");
         userids.add("dummy");
